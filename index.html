@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- FIX 3: viewport-fit=cover lets the page draw under the notch; theme-color tints the status bar -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070b14">
+<meta name="color-scheme" content="dark">
+<title>Shivam Pathak | Portfolio & Resume</title>
+<meta name="description" content="Shivam Pathak - Business student and technology practitioner from Nepal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css'">
+<style>
+:root{--bg:#070b14;--ink:#eef2ff;--mute:#9aa6c1;--sky:#38bdf8;--ind:#818cf8;--mint:#34d399;
+--glass:rgba(255,255,255,.06);--edge:rgba(255,255,255,.14);--top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:var(--bg);scroll-padding-top:calc(var(--top) + 84px)}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);min-height:100dvh;overflow-x:hidden;line-height:1.6;padding-bottom:var(--bot)}
+h1,h2,h3,.logo{font-family:Sora,Inter,sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+/* animated aurora behind the glass */
+.aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vmax;height:46vmax;background:#0ea5e9;top:-14vmax;left:-12vmax}
+.aurora i:nth-child(2){width:40vmax;height:40vmax;background:#6366f1;bottom:-12vmax;right:-10vmax;animation-delay:-8s}
+.aurora i:nth-child(3){width:26vmax;height:26vmax;background:#10b981;top:40%;left:45%;opacity:.28;animation-delay:-14s}
+@keyframes drift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+.glass{background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 50px rgba(0,0,0,.35)}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.h2{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:800;margin-bottom:10px}
+.sub{color:var(--mute);max-width:56ch;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:14px;font-weight:600;font-size:.92rem;transition:transform .2s}
+.btn:active{transform:scale(.97)}
+.pri{background:linear-gradient(135deg,var(--sky),var(--ind));color:#04101f}
+.gl{background:var(--glass);border:1px solid var(--edge);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+/* NAV: sits below the notch via safe-area padding, fully blended */
+header{position:fixed;top:0;left:0;right:0;z-index:40;padding-top:var(--top);background:rgba(7,11,20,.55);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--edge)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1100px;margin:0 auto;padding:0 20px}
+.logo{font-weight:800;font-size:1.15rem}.logo b{color:var(--sky)}
+nav{display:flex;gap:26px;font-size:.9rem;color:var(--mute)}
+nav a:hover{color:#fff}
+#burger{display:none;width:42px;height:42px;border-radius:12px}
+#menu{display:none;padding:8px 20px 18px;flex-direction:column;gap:4px}
+#menu a{padding:12px 10px;border-radius:10px;color:var(--mute)}
+#menu.open{display:flex}
+/* HERO */
+#hero{min-height:100dvh;display:flex;align-items:center;padding:calc(var(--top) + 100px) 0 60px}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;font-size:.8rem;color:var(--mint);margin-bottom:20px}
+.tag span{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(2.5rem,8vw,4.6rem);font-weight:800;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--sky),var(--ind),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:1.15rem;color:#cdd6ee;margin:14px 0 8px;font-weight:500}
+.lead{color:var(--mute);max-width:50ch;margin-bottom:26px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.photo{aspect-ratio:4/5;border-radius:32px;padding:10px;position:relative;max-width:360px;margin-left:auto;width:100%}
+.photo .in{width:100%;height:100%;border-radius:24px;overflow:hidden;position:relative}
+.chip{position:absolute;padding:9px 14px;border-radius:14px;font-size:.78rem;font-weight:600;display:flex;gap:8px;align-items:center;animation:float 6s ease-in-out infinite alternate}
+.chip i{color:var(--sky)}
+@keyframes float{to{transform:translateY(-10px)}}
+/* PHOTO SLOTS */
+.slot{width:100%;height:100%;object-fit:cover;display:block}
+.empty{width:100%;height:100%;display:grid;place-items:center;text-align:center;font-size:.8rem;color:var(--mute);background:repeating-linear-gradient(135deg,rgba(255,255,255,.04) 0 12px,rgba(255,255,255,.08) 12px 24px);cursor:pointer;padding:10px}
+.empty i{display:block;font-size:1.6rem;color:var(--sky);margin-bottom:6px}
+/* ABOUT / SKILLS */
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+.card{border-radius:24px;padding:26px}
+.card p{color:var(--mute);margin-top:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.stats div{border-radius:16px;padding:14px}
+.stats b{display:block;font-family:Sora;font-size:1.2rem;color:var(--sky)}
+.stats small{color:var(--mute)}
+dl div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--edge);font-size:.88rem}
+dl div:last-child{border:0}
+dt{color:var(--mute)}dd{text-align:right;word-break:break-word}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{border-radius:22px;padding:22px}
+.skill>i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.1rem;margin-bottom:14px;background:rgba(56,189,248,.14);color:var(--sky)}
+.skill h3{font-size:1.02rem;margin-bottom:6px}.skill p{font-size:.85rem;color:var(--mute);margin-bottom:12px}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pills span{padding:4px 10px;border-radius:99px;font-size:.72rem;background:rgba(255,255,255,.08);color:#cdd6ee}
+/* GALLERY bento */
+.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:14px}
+.gal>div{border-radius:22px;overflow:hidden;padding:6px;position:relative}
+.gal>div>*{border-radius:17px}
+.gal>div:nth-child(1){grid-column:span 3;grid-row:span 2}
+.gal>div:nth-child(2){grid-column:span 3}
+.gal>div:nth-child(3){grid-column:span 3}
+.gal>div:nth-child(4){grid-column:span 3}
+.gal>div:nth-child(5){grid-column:span 3}
+.gal img{cursor:zoom-in;transition:transform .5s}
+.gal>div:hover img{transform:scale(1.05)}
+/* PROJECTS */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{padding:9px 16px;border-radius:12px;font-size:.85rem;color:var(--mute)}
+.filters button.on{background:linear-gradient(135deg,var(--sky),var(--ind));color:#04101f;font-weight:600}
+.proj{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pc{border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.pc[hidden]{display:none}
+.pc h3{font-size:1.1rem}.pc p{font-size:.86rem;color:var(--mute);flex:1}
+.pc a,.pc button{color:var(--sky);font-weight:600;font-size:.85rem;text-align:left}
+.kind{font-size:.72rem;color:var(--ind);font-weight:600}
+/* CONTACT */
+form{display:grid;gap:14px}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,textarea{width:100%;padding:13px 15px;border-radius:14px;border:1px solid var(--edge);background:rgba(0,0,0,.28);color:#fff;font:inherit;font-size:16px}
+input:focus,textarea:focus{outline:0;border-color:var(--sky)}
+label{font-size:.78rem;color:var(--mute);display:block;margin-bottom:6px}
+.ci{display:flex;gap:14px;align-items:center;padding:16px;border-radius:18px;margin-bottom:12px}
+.ci i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(129,140,248,.16);color:var(--ind)}
+.ci small{display:block;color:var(--mute);font-size:.74rem}
+footer{position:relative;z-index:1;text-align:center;color:var(--mute);font-size:.82rem;padding:34px 20px calc(34px + var(--bot));border-top:1px solid var(--edge)}
+/* MODALS (resume, lightbox, project) */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:calc(var(--top) + 12px) 12px calc(var(--bot) + 12px);background:rgba(3,6,12,.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal.open{display:flex}
+.sheet{width:100%;max-width:860px;max-height:100%;display:flex;flex-direction:column;border-radius:24px;overflow:hidden;background:rgba(14,20,36,.9)}
+.sh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--edge)}
+.sh h3{font-size:1rem}
+.x{width:40px;height:40px;border-radius:12px;font-size:1.1rem}
+.sb{overflow:auto;-webkit-overflow-scrolling:touch}
+#lb{background:rgba(3,6,12,.92)}
+#lb img{max-width:100%;max-height:78dvh;border-radius:18px;touch-action:pan-y}
+.nv{position:absolute;top:50%;width:46px;height:46px;border-radius:50%;transform:translateY(-50%)}
+/* CV (one-page) */
+.cv{padding:28px;color:#e6ebf8;font-size:.86rem}
+.cv h1{font-size:1.7rem;letter-spacing:0}
+.cv h4{font-family:Sora;font-size:.74rem;letter-spacing:.12em;color:var(--sky);margin:18px 0 8px}
+.cv .hd{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:2px solid var(--sky);padding-bottom:12px}
+.cv .ct{font-size:.78rem;color:var(--mute);line-height:1.7}
+.cv .bx{border:1px solid var(--edge);border-radius:10px;padding:10px 12px;margin-bottom:8px;break-inside:avoid}
+.cv .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cv .g2 .bx{margin:0}
+.cv .pj{border-left:3px solid var(--sky);padding-left:12px;margin-bottom:10px;break-inside:avoid}
+.cv .mut{color:var(--mute)}
+#toast{position:fixed;left:50%;bottom:calc(var(--bot) + 20px);transform:translateX(-50%);z-index:80;padding:12px 18px;border-radius:14px;display:none;font-size:.88rem}
+@media(max-width:900px){.hero,.two{grid-template-columns:1fr}.photo{margin:10px auto 0;max-width:300px}.skills{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){nav,.dk{display:none}#burger{display:grid;place-items:center}section{padding:52px 0}
+.skills,.proj,.f2{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+.gal>div:nth-child(n){grid-column:span 1;grid-row:span 1}.gal>div:nth-child(1){grid-column:span 2;grid-row:span 2}
+.stats{grid-template-columns:1fr 1fr 1fr}.cv{padding:20px}.cv .g2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+/* FIX 1: PRINT. Fixed elements repeat on every printed page, so the modal is made static
+   and everything else is removed. Result: ONE clean A4 page. */
+@page{size:A4;margin:10mm}
+@media print{
+html,body{background:#fff!important;color:#000!important;padding:0!important}
+body>*:not(#resume){display:none!important}
+#resume{display:block!important;position:static!important;inset:auto!important;padding:0!important;background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+#resume .sheet{display:block!important;max-width:none!important;max-height:none!important;border:0!important;box-shadow:none!important;background:#fff!important;border-radius:0!important;overflow:visible!important}
+#resume .sh{display:none!important}
+#resume .sb{overflow:visible!important}
+.cv{padding:0!important;font-size:10.5px!important;line-height:1.4!important;color:#111!important;zoom:.96}
+.cv *{color:#111!important;background:none!important;border-color:#cbd5e1!important;box-shadow:none!important}
+.cv h1{font-size:22px!important}.cv h4{color:#0369a1!important;margin:11px 0 5px!important}
+.cv .hd{border-bottom:2px solid #0369a1!important}.cv .mut,.cv .ct{color:#475569!important}
+.cv .g2{grid-template-columns:1fr 1fr!important}
+}
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header>
+ <div class="bar">
+  <a href="#hero" class="logo">Shivam <b>Pathak</b></a>
+  <nav><a href="#about">About</a><a href="#skills">Skills</a><a href="#gallery">Gallery</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+  <div class="row dk"><button class="btn gl" data-open="resume"><i class="fa-solid fa-file-lines" style="color:var(--sky)"></i> Resume</button></div>
+  <button id="burger" class="glass" aria-label="Menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+ </div>
+ <div id="menu">
+  <a href="#about">About</a><a href="#skills">Skills</a><a href="#gallery">Gallery</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+  <button class="btn pri" data-open="resume" style="justify-content:center;margin-top:8px"><i class="fa-solid fa-file-lines"></i> View resume</button>
+ </div>
+</header>
+
+<main>
+<section id="hero"><div class="wrap hero">
+ <div>
+  <div class="tag glass"><span></span> Open to projects and collaborations</div>
+  <h1>Hi, I'm <em>Shivam Pathak</em></h1>
+  <p class="role">Business student and web builder from Nepal</p>
+  <p class="lead">I connect business strategy, clean front-end design, AI tools and short-form content to build useful digital work.</p>
+  <div class="row">
+   <a href="#projects" class="btn pri"><i class="fa-solid fa-folder-open"></i> See my work</a>
+   <button class="btn gl" data-open="resume"><i class="fa-solid fa-file-lines" style="color:var(--sky)"></i> Open resume</button>
+   <a href="https://beacons.ai/shivam_pathak" target="_blank" rel="noopener" class="btn gl"><i class="fa-solid fa-link" style="color:var(--ind)"></i> Beacons</a>
+  </div>
+ </div>
+ <div class="photo glass">
+  <div class="in" data-slot="profile"></div>
+  <div class="chip glass" style="top:8%;left:-6%"><i class="fa-solid fa-laptop-code"></i> Web design</div>
+  <div class="chip glass" style="bottom:22%;right:-5%;animation-delay:-2s"><i class="fa-solid fa-robot"></i> AI workflows</div>
+  <div class="chip glass" style="bottom:6%;left:-4%;animation-delay:-4s"><i class="fa-solid fa-chart-line"></i> BBS student</div>
+ </div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+ <div class="card glass">
+  <h2 class="h2">Analytical mind, creative code</h2>
+  <p>I'm pursuing a Bachelor of Business Studies (BBS) in Nepal. My interest sits where business management meets digital technology.</p>
+  <p>I design web interfaces, write clean HTML/CSS, engineer AI prompts and plan digital content. Whether it's a portfolio, a brand showcase or a business dataset, I aim for clarity and precision.</p>
+  <div class="stats"><div class="glass"><b>BBS</b><small>Business</small></div><div class="glass"><b>Web</b><small>HTML, CSS, JS</small></div><div class="glass"><b>AI</b><small>Prompting</small></div></div>
+ </div>
+ <div class="card glass"><h3 style="margin-bottom:8px">Quick facts</h3>
+  <dl>
+   <div><dt>Name</dt><dd>Shivam Pathak</dd></div>
+   <div><dt>Domain</dt><dd style="color:var(--sky)">shivampathak.com.np</dd></div>
+   <div><dt>Location</dt><dd>Nepal</dd></div>
+   <div><dt>Education</dt><dd>BBS (ongoing)</dd></div>
+   <div><dt>Email</dt><dd>spathak00321@gmail.com</dd></div>
+   <div><dt>Phone</dt><dd>+977 9811903601</dd></div>
+  </dl>
+ </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+ <h2 class="h2">Skills</h2><p class="sub">Technical web skills backed by a business education.</p>
+ <div class="skills">
+  <div class="skill glass"><i class="fa-solid fa-laptop-code"></i><h3>Web development</h3><p>Responsive single-page sites and clean interfaces.</p><div class="pills"><span>HTML5</span><span>CSS3</span><span>Tailwind</span><span>JavaScript</span></div></div>
+  <div class="skill glass"><i class="fa-solid fa-robot" style="background:rgba(129,140,248,.16);color:var(--ind)"></i><h3>AI and prompting</h3><p>Generative AI tools for faster workflows and content.</p><div class="pills"><span>ChatGPT</span><span>Claude</span><span>Automation</span></div></div>
+  <div class="skill glass"><i class="fa-solid fa-chart-line" style="background:rgba(52,211,153,.16);color:var(--mint)"></i><h3>Business</h3><p>Grounding in accounting, marketing and management.</p><div class="pills"><span>Accounting</span><span>Management</span><span>Excel</span></div></div>
+  <div class="skill glass"><i class="fa-solid fa-photo-film" style="background:rgba(251,191,36,.16);color:#fbbf24"></i><h3>Digital media</h3><p>Short-form video and social content.</p><div class="pills"><span>Video editing</span><span>Content</span><span>Beacons</span></div></div>
+ </div>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+ <h2 class="h2">Gallery</h2><p class="sub">A few moments and work from my journey. Tap any photo to enlarge.</p>
+ <div class="gal" id="gal"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+ <h2 class="h2">Projects</h2><p class="sub">Domain setup, creator hubs and this site.</p>
+ <div class="filters" id="filters"><button class="on glass" data-f="all">All</button><button class="glass" data-f="web">Web and infra</button><button class="glass" data-f="media">Digital hubs</button></div>
+ <div class="proj">
+  <div class="pc glass" data-c="web"><span class="kind">Live infrastructure</span><h3>Official .com.np domain</h3><p>Nepal country-code domain with Cloudflare DNS, registry verification and SSL routing.</p><div class="pills"><span>DNS</span><span>Cloudflare</span></div><button data-proj="0">Read details</button></div>
+  <div class="pc glass" data-c="media"><span class="kind">Creator profile</span><h3>Beacons profile hub</h3><p>One mobile-first link page that gathers every social channel and contact method.</p><div class="pills"><span>Beacons</span><span>Link hub</span></div><a href="https://beacons.ai/shivam_pathak" target="_blank" rel="noopener">Visit hub</a></div>
+  <div class="pc glass" data-c="web"><span class="kind">Interactive platform</span><h3>Portfolio and CV</h3><p>Single-page site with a one-page printable CV, project filters, gallery and contact form.</p><div class="pills"><span>HTML5</span><span>Glass UI</span></div><button data-proj="1">Read details</button></div>
+ </div>
+</div></section>
+
+<section id="contact"><div class="wrap two">
+ <div>
+  <h2 class="h2">Let's work together</h2><p class="sub">Have a project, inquiry or idea? Send a message or reach out directly.</p>
+  <div class="ci glass"><i class="fa-solid fa-envelope"></i><div><small>Email</small><a href="mailto:spathak00321@gmail.com">spathak00321@gmail.com</a></div></div>
+  <div class="ci glass"><i class="fa-solid fa-phone"></i><div><small>Phone / WhatsApp</small><a href="tel:+9779811903601">+977 9811903601</a></div></div>
+  <div class="ci glass"><i class="fa-solid fa-globe"></i><div><small>Domain</small>shivampathak.com.np</div></div>
+ </div>
+ <div class="card glass">
+  <form id="portfolio-form">
+   <input type="hidden" name="access_key" value="7032e8e6-32e4-4334-9360-e16cff1f5566">
+   <div class="f2"><div><label for="n">Your name *</label><input id="n" name="name" required autocomplete="name"></div><div><label for="e">Your email *</label><input id="e" type="email" name="email" required autocomplete="email"></div></div>
+   <div><label for="s">Subject</label><input id="s" name="subject"></div>
+   <div><label for="m">Message *</label><textarea id="m" name="message" rows="5" required></textarea></div>
+   <button class="btn pri" type="submit" style="justify-content:center"><i class="fa-solid fa-paper-plane"></i> Send message</button>
+   <div id="form-result" style="text-align:center;font-size:.88rem"></div>
+  </form>
+ </div>
+</div></section>
+</main>
+
+<footer>© 2026 Shivam Pathak · shivampathak.com.np<br><a href="#hero" style="color:var(--sky)">Back to top</a></footer>
+
+<!-- RESUME: one screen modal, one printed A4 page -->
+<div class="modal" id="resume" role="dialog" aria-modal="true" aria-label="Curriculum Vitae">
+ <div class="sheet glass">
+  <div class="sh"><h3>Curriculum Vitae</h3>
+   <div class="row" style="gap:8px"><button class="btn pri" onclick="window.print()" style="padding:9px 14px"><i class="fa-solid fa-print"></i> Save as PDF</button><button class="x glass" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div></div>
+  <div class="sb"><div class="cv">
+   <div class="hd"><div><h1>SHIVAM PATHAK</h1><div style="color:var(--sky);font-weight:500;margin-top:4px">Business Student &amp; Technology Practitioner</div></div>
+    <div class="ct">shivampathak.com.np<br>spathak00321@gmail.com<br>+977 9811903601<br>Nepal</div></div>
+   <h4>EXECUTIVE SUMMARY</h4>
+   <p>Motivated Bachelor of Business Studies (BBS) student combining business acumen with self-taught front-end web design and modern AI tool integration. Adept at creating responsive websites, executing content strategy and analyzing operational metrics. Looking to apply analytical and technical skills to modern digital projects.</p>
+   <h4>EDUCATION</h4>
+   <div class="bx"><div style="display:flex;justify-content:space-between;gap:10px"><b>Bachelor of Business Studies (BBS)</b><span style="color:var(--sky)">Ongoing</span></div><div class="mut">Tribhuvan University affiliated institution, Nepal</div><div>Focus: Financial Accounting, Strategic Management, Marketing, Business Economics.</div></div>
+   <h4>KEY COMPETENCIES</h4>
+   <div class="g2">
+    <div class="bx"><b>Web:</b> HTML5, CSS3, Tailwind CSS, JavaScript, Domain &amp; DNS (Cloudflare).</div>
+    <div class="bx"><b>AI &amp; Automation:</b> Prompt engineering (ChatGPT, Claude), AI workflow integration.</div>
+    <div class="bx"><b>Business:</b> Financial analysis, accounting fundamentals, Excel data handling.</div>
+    <div class="bx"><b>Media:</b> Short-form video editing, link hub management (Beacons).</div>
+   </div>
+   <h4>PROJECTS &amp; INITIATIVES</h4>
+   <div class="pj"><b>Personal Web Platform (shivampathak.com.np)</b><div class="mut">Lead Creator &amp; Web Developer</div>Designed and deployed a responsive personal portfolio as a single page, hosted on the official Nepal country-code domain with DNS routing.</div>
+   <div class="pj"><b>Digital Content &amp; Media Channels</b><div class="mut">Content Strategist</div>Managed link ecosystems via Beacons, curated video projects and optimized brand outreach across platforms.</div>
+   <h4>LANGUAGES</h4>
+   <div>Nepali (Native) &nbsp;•&nbsp; English (Professional) &nbsp;•&nbsp; Hindi (Fluent)</div>
+  </div></div>
+ </div>
+</div>
+
+<div class="modal" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+ <button class="x glass" data-close aria-label="Close" style="position:absolute;top:calc(var(--top) + 14px);right:14px"><i class="fa-solid fa-xmark"></i></button>
+ <button class="nv glass" id="prev" style="left:12px" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+ <img id="lbi" alt="">
+ <button class="nv glass" id="next" style="right:12px" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<div class="modal" id="pm" role="dialog" aria-modal="true">
+ <div class="sheet glass" style="max-width:480px"><div class="sh"><h3 id="pt"></h3><button class="x glass" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+ <div class="sb card"><p id="pd" style="margin:0"></p></div></div>
+</div>
+<div id="toast" class="glass"></div>
+<input type="file" id="pick" accept="image/*" hidden>
+
+<script>
+/* ===== EDIT HERE: put your image files next to index.html (e.g. img/me.jpg) ===== */
+const PROFILE = "";                 // e.g. "img/me.jpg"
+const PHOTOS  = [];                 // e.g. ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"]
+const PROJECTS = [
+ ["Official domain setup","Configured a custom .com.np domain through the Mercantile Nepal registry and connected Cloudflare primary and secondary nameservers for fast DNS propagation and edge security."],
+ ["Interactive CV and portfolio","A self-contained single-page site with academic background, skills, a photo gallery and a print-ready one-page PDF resume."]];
+/* ================================================================================ */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+let pickTarget=null;
+function fillSlot(el,src,alt){el.innerHTML="";const i=new Image();i.className="slot";i.alt=alt;i.src=src;i.loading="lazy";el.appendChild(i);return i}
+function emptySlot(el,label){el.innerHTML='<div class="empty"><div><i class="fa-solid fa-image"></i>'+label+'<br><small>tap to preview a photo</small></div></div>';$(".empty",el).onclick=()=>{pickTarget=el;$("#pick").click()}}
+$("#pick").onchange=e=>{const f=e.target.files[0];if(!f||!pickTarget)return;const r=new FileReader();r.onload=()=>{const i=fillSlot(pickTarget,r.result,"Preview");i.onclick=()=>openLB(r.result)};r.readAsDataURL(f);e.target.value=""};
+const prof=$('[data-slot="profile"]');PROFILE?fillSlot(prof,PROFILE,"Shivam Pathak"):emptySlot(prof,"Your portrait");
+const gal=$("#gal");
+for(let k=0;k<5;k++){const d=document.createElement("div");d.className="glass";const s=document.createElement("div");s.style.cssText="width:100%;height:100%;overflow:hidden";d.appendChild(s);gal.appendChild(d);
+ if(PHOTOS[k]){const i=fillSlot(s,PHOTOS[k],"Gallery photo "+(k+1));i.onclick=()=>openLB(k)}else emptySlot(s,"Photo "+(k+1))}
+/* lightbox */
+let cur=0;const lb=$("#lb"),lbi=$("#lbi");
+function openLB(x){const real=PHOTOS.filter(Boolean);if(typeof x==="string"){lbi.src=x;real.length=0;cur=0}else{cur=x;lbi.src=PHOTOS[cur]}lb.classList.add("open");lb.dataset.n=typeof x==="string"?0:PHOTOS.length}
+function step(d){const n=+lb.dataset.n;if(!n)return;cur=(cur+d+n)%n;lbi.src=PHOTOS[cur]}
+$("#prev").onclick=()=>step(-1);$("#next").onclick=()=>step(1);
+let sx=0;lbi.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+lbi.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)step(d>0?-1:1)});
+/* modals */
+function lock(){document.body.style.overflow=$$(".modal.open").length?"hidden":""}
+$$("[data-open]").forEach(b=>b.onclick=()=>{$("#"+b.dataset.open).classList.add("open");$("#menu").classList.remove("open");lock()});
+$$("[data-close]").forEach(b=>b.onclick=()=>{b.closest(".modal").classList.remove("open");lock()});
+$$(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m){m.classList.remove("open");lock()}}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$$(".modal").forEach(m=>m.classList.remove("open"));lock()}if(lb.classList.contains("open")){if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)}});
+$$("[data-proj]").forEach(b=>b.onclick=()=>{const p=PROJECTS[b.dataset.proj];$("#pt").textContent=p[0];$("#pd").textContent=p[1];$("#pm").classList.add("open");lock()});
+/* menu + filters */
+const bg=$("#burger");bg.onclick=()=>{const o=$("#menu").classList.toggle("open");bg.setAttribute("aria-expanded",o)};
+$$("#menu a").forEach(a=>a.onclick=()=>$("#menu").classList.remove("open"));
+$$("#filters button").forEach(b=>b.onclick=()=>{$$("#filters button").forEach(x=>x.classList.toggle("on",x===b));$$(".pc").forEach(c=>c.hidden=b.dataset.f!=="all"&&c.dataset.c!==b.dataset.f)});
+/* contact form (Web3Forms) */
+const form=$("#portfolio-form"),res=$("#form-result");
+form.addEventListener("submit",async e=>{e.preventDefault();res.style.color="";res.textContent="Sending…";
+ try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(form)))});
+  const j=await r.json();if(r.ok){res.style.color="#34d399";res.textContent="Message sent. Thank you!";form.reset()}else{res.style.color="#f87171";res.textContent=j.message||"Could not send. Please try again."}}
+ catch(_){res.style.color="#f87171";res.textContent="Network problem. Check your connection and try again."}
+ setTimeout(()=>res.textContent="",6000)});
+</script>
+</body>
+</html>
