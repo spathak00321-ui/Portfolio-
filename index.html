@@ -353,6 +353,9 @@ form.addEventListener("submit",async e=>{e.preventDefault();res.style.color="";r
   const j=await r.json();if(r.ok){res.style.color="#34d399";res.textContent="Message sent. Thank you!";form.reset()}else{res.style.color="#f87171";res.textContent=j.message||"Could not send. Please try again."}}
  catch(_){res.style.color="#f87171";res.textContent="Network problem. Check your connection and try again."}
  setTimeout(()=>res.textContent="",6000)});
+   /* basic photo protection */
+document.addEventListener("contextmenu",e=>{if(e.target.tagName==="IMG")e.preventDefault()});
+document.addEventListener("dragstart",e=>{if(e.target.tagName==="IMG")e.preventDefault()});
 </script>
 </body>
 </html>
