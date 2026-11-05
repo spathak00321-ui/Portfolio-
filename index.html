@@ -89,14 +89,10 @@ dt{color:var(--mute)}dd{text-align:right;word-break:break-word}
 .pills{display:flex;flex-wrap:wrap;gap:6px}
 .pills span{padding:4px 10px;border-radius:99px;font-size:.72rem;background:rgba(255,255,255,.08);color:#cdd6ee}
 /* GALLERY bento */
-.gal{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:14px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}
 .gal>div{border-radius:22px;overflow:hidden;padding:6px;position:relative}
 .gal>div>*{border-radius:17px}
-.gal>div:nth-child(1){grid-column:span 3;grid-row:span 2}
-.gal>div:nth-child(2){grid-column:span 3}
-.gal>div:nth-child(3){grid-column:span 3}
-.gal>div:nth-child(4){grid-column:span 3}
-.gal>div:nth-child(5){grid-column:span 3}
+.gal>div:nth-child(1){grid-column:span 2;grid-row:span 2}
 .gal img{cursor:zoom-in;transition:transform .5s}
 .gal>div:hover img{transform:scale(1.05)}
 /* PROJECTS */
@@ -144,8 +140,8 @@ footer{position:relative;z-index:1;text-align:center;color:var(--mute);font-size
 #toast{position:fixed;left:50%;bottom:calc(var(--bot) + 20px);transform:translateX(-50%);z-index:80;padding:12px 18px;border-radius:14px;display:none;font-size:.88rem}
 @media(max-width:900px){.hero,.two{grid-template-columns:1fr}.photo{margin:10px auto 0;max-width:300px}.skills{grid-template-columns:1fr 1fr}.proj{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){nav,.dk{display:none}#burger{display:grid;place-items:center}section{padding:52px 0}
-.skills,.proj,.f2{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
-.gal>div:nth-child(n){grid-column:span 1;grid-row:span 1}.gal>div:nth-child(1){grid-column:span 2;grid-row:span 2}
+.skills,.proj,.f2{grid-template-columns:1fr}.gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+
 .stats{grid-template-columns:1fr 1fr 1fr}.cv{padding:20px}.cv .g2{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 /* FIX 1: PRINT. Fixed elements repeat on every printed page, so the modal is made static
@@ -309,30 +305,31 @@ body>*:not(#resume){display:none!important}
  <div class="sb card"><p id="pd" style="margin:0"></p></div></div>
 </div>
 <div id="toast" class="glass"></div>
-<input type="file" id="pick" accept="image/*" hidden>
 
 <script>
 /* ===== EDIT HERE: put your image files next to index.html (e.g. img/me.jpg) ===== */
 const PROFILE = "";                 // e.g. "img/me.jpg"
 const PHOTOS  = [];                 // e.g. ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"]
+const FOCUS = "50% 20%";          // default: keeps faces visible (x y). Lower y = higher part of photo
+const PROFILE_FOCUS = "50% 20%";    // portrait focus
+const PHOTO_FOCUS = [];             // optional per photo, e.g. ["50% 15%","50% 30%"]
 const PROJECTS = [
  ["Official domain setup","Configured a custom .com.np domain through the Mercantile Nepal registry and connected Cloudflare primary and secondary nameservers for fast DNS propagation and edge security."],
  ["Interactive CV and portfolio","A self-contained single-page site with academic background, skills, a photo gallery and a print-ready one-page PDF resume."]];
 /* ================================================================================ */
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-let pickTarget=null;
-function fillSlot(el,src,alt){el.innerHTML="";const i=new Image();i.className="slot";i.alt=alt;i.src=src;i.loading="lazy";el.appendChild(i);return i}
-function emptySlot(el,label){el.innerHTML='<div class="empty"><div><i class="fa-solid fa-image"></i>'+label+'<br><small>tap to preview a photo</small></div></div>';$(".empty",el).onclick=()=>{pickTarget=el;$("#pick").click()}}
-$("#pick").onchange=e=>{const f=e.target.files[0];if(!f||!pickTarget)return;const r=new FileReader();r.onload=()=>{const i=fillSlot(pickTarget,r.result,"Preview");i.onclick=()=>openLB(r.result)};r.readAsDataURL(f);e.target.value=""};
-const prof=$('[data-slot="profile"]');PROFILE?fillSlot(prof,PROFILE,"Shivam Pathak"):emptySlot(prof,"Your portrait");
-const gal=$("#gal");
-for(let k=0;k<5;k++){const d=document.createElement("div");d.className="glass";const s=document.createElement("div");s.style.cssText="width:100%;height:100%;overflow:hidden";d.appendChild(s);gal.appendChild(d);
- if(PHOTOS[k]){const i=fillSlot(s,PHOTOS[k],"Gallery photo "+(k+1));i.onclick=()=>openLB(k)}else emptySlot(s,"Photo "+(k+1))}
+function fillSlot(el,src,alt,pos){el.innerHTML="";const i=new Image();i.className="slot";i.alt=alt;i.src=src;i.loading="lazy";i.style.objectPosition=pos||FOCUS;el.appendChild(i);return i}
+const prof=$('[data-slot="profile"]');
+if(PROFILE)fillSlot(prof,PROFILE,"Shivam Pathak",PROFILE_FOCUS);else prof.closest(".photo").style.display="none";
+const list=PHOTOS.filter(Boolean),gal=$("#gal");
+if(!list.length){$("#gallery").style.display="none";$$('a[href="#gallery"]').forEach(a=>a.style.display="none")}
+list.forEach((src,k)=>{const d=document.createElement("div");d.className="glass";const s=document.createElement("div");s.style.cssText="width:100%;height:100%;overflow:hidden";d.appendChild(s);gal.appendChild(d);const i=fillSlot(s,src,"Gallery photo "+(k+1),PHOTO_FOCUS[k]);i.onclick=()=>openLB(k)});
 /* lightbox */
 let cur=0;const lb=$("#lb"),lbi=$("#lbi");
-function openLB(x){const real=PHOTOS.filter(Boolean);if(typeof x==="string"){lbi.src=x;real.length=0;cur=0}else{cur=x;lbi.src=PHOTOS[cur]}lb.classList.add("open");lb.dataset.n=typeof x==="string"?0:PHOTOS.length}
-function step(d){const n=+lb.dataset.n;if(!n)return;cur=(cur+d+n)%n;lbi.src=PHOTOS[cur]}
-$("#prev").onclick=()=>step(-1);$("#next").onclick=()=>step(1);
+function show(){lbi.src=list[cur];$("#prev").style.display=$("#next").style.display=list.length<2?"none":""}
+function openLB(k){cur=k;show();lb.classList.add("open");lock()}
+function step(d){if(list.length<2)return;cur=(cur+d+list.length)%list.length;show()}
+$("#prev").onclick=e=>{e.stopPropagation();step(-1)};$("#next").onclick=e=>{e.stopPropagation();step(1)};
 let sx=0;lbi.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
 lbi.addEventListener("touchend",e=>{const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)step(d>0?-1:1)});
 /* modals */
