@@ -490,18 +490,27 @@
   <script>
     document.documentElement.classList.add('js');
 
-    // Optional portrait: if assets/profile.webp is absent, keep the designed initials fallback.
-    const profileImage = document.getElementById('profile-image');
-    const portraitPlaceholder = document.getElementById('portrait-placeholder');
-    profileImage.addEventListener('load', () => {
-      profileImage.hidden = false;
-      portraitPlaceholder.hidden = true;
-    });
-    profileImage.addEventListener('error', () => {
-      profileImage.hidden = true;
-      portraitPlaceholder.hidden = false;
-    });
+    // Portrait: image aaye to poora fill, na aaye to SP. placeholder dikhe.
+const profileImage = document.getElementById('profile-image');
+const portraitPlaceholder = document.getElementById('portrait-placeholder');
 
+function showImage() {
+  profileImage.hidden = false;
+  portraitPlaceholder.hidden = true;
+}
+function showPlaceholder() {
+  profileImage.hidden = true;
+  portraitPlaceholder.hidden = false;
+}
+
+profileImage.addEventListener('load', showImage);
+profileImage.addEventListener('error', showPlaceholder);
+
+// Cache se already load ho chuki image ke liye
+if (profileImage.complete) {
+  profileImage.naturalWidth > 0 ? showImage() : showPlaceholder();
+}
+    
     // Accessible mobile navigation.
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('primary-nav');
