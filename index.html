@@ -89,8 +89,10 @@
     .orbit::before,.orbit::after{content:"";position:absolute;border:1px solid rgba(154,183,219,.12);border-radius:50%;inset:11%}
     .orbit::after{inset:23%}
     .portrait-card{position:relative;width:min(78%,300px);aspect-ratio:4/5;border-radius:28px;border:1px solid rgba(182,210,242,.23);background:linear-gradient(145deg,rgba(119,201,255,.15),rgba(169,154,255,.08) 55%,rgba(255,255,255,.025));box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}
-    .portrait-card img{width:100%;height:100%;object-fit:cover}
+    .portrait-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
     .portrait-placeholder{display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(circle at 50% 30%,rgba(119,201,255,.22),transparent 45%),linear-gradient(145deg,#17263b,#101827);text-align:center;padding:25px}
+    .portrait-placeholder[hidden],
+    .portrait-card img[hidden]{display:none !important}
     .monogram{font:700 clamp(4rem,10vw,6.8rem)/1 "Space Grotesk",sans-serif;letter-spacing:-.1em;color:#d8efff}
     .placeholder-note{font-size:.76rem;color:var(--muted);margin-top:14px}
     .float-label{position:absolute;padding:11px 14px;border:1px solid var(--line);border-radius:13px;background:rgba(17,26,42,.92);box-shadow:var(--shadow);font-size:.78rem;font-weight:700;color:#dce8f7}
