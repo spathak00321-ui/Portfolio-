@@ -63,13 +63,13 @@
         }
         .bg-gradient-glow {
             background: radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 100%);
-                /* Hide print elements during regular viewing */
+
+                    /* Hide print elements during regular viewing */
         @media print {
             body * {
                 display: none !important;
             }
             #resumeModal, #resumeModal * {
-                display: block !important;
                 visibility: visible !important;
             }
             #resumeModal {
@@ -77,11 +77,12 @@
                 left: 0 !important;
                 top: 0 !important;
                 width: 100% !important;
-                height: auto !important;
+                height: 100% !important;
                 background: #ffffff !important;
                 color: #000000 !important;
-                padding: 0 !important;
-                margin: 0 !important;
+                display: block !important;
+                overflow: visible !important;
+                z-index: 9999 !important;
             }
             #resumeModal > div {
                 background: #ffffff !important;
@@ -92,6 +93,7 @@
                 box-shadow: none !important;
                 padding: 0 !important;
                 margin: 0 !important;
+                position: static !important;
             }
             .no-print {
                 display: none !important;
@@ -99,26 +101,28 @@
             #resumeContent {
                 background: #ffffff !important;
                 color: #000000 !important;
-                padding: 8px 12px !important;
-                font-size: 10px !important;
+                padding: 5px 10px !important;
+                font-size: 9.5px !important;
                 line-height: 1.15 !important;
+                height: auto !important;
+                overflow: visible !important;
             }
             #resumeContent h1 {
-                font-size: 15px !important;
+                font-size: 14px !important;
                 color: #000000 !important;
             }
             #resumeContent h2 {
-                font-size: 10px !important;
+                font-size: 9.5px !important;
                 color: #0284c7 !important;
-                margin-top: 4px !important;
-                margin-bottom: 2px !important;
+                margin-top: 3px !important;
+                margin-bottom: 1px !important;
             }
             #resumeContent p, #resumeContent span, #resumeContent div, #resumeContent dt, #resumeContent dd {
                 color: #1f2937 !important;
-                font-size: 9.5px !important;
+                font-size: 9px !important;
             }
             #resumeContent .space-y-8 > * + * {
-                margin-top: 4px !important;
+                margin-top: 3px !important;
             }
             #resumeContent .space-y-4 > * + * {
                 margin-top: 2px !important;
@@ -127,9 +131,11 @@
             #resumeContent .bg-gray-800 {
                 background: #f9fafb !important;
                 border: 1px solid #e5e7eb !important;
-                padding: 3px 5px !important;
-                border-radius: 4px !important;
+                padding: 2px 4px !important;
+                border-radius: 3px !important;
             }
+        }
+            
         }
             
         }
